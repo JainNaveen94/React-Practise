@@ -56,8 +56,21 @@ class App extends Component {
     );
   };
 
+  deletePersonClickHandler = (idx) => {
+    // Create the Copy of the Person Array Using Spread Operator
+    let persons = [...this.state.persons];
+    // Delete the Entry From the Copied Array
+    persons.splice(idx, 1);
+    // Replace the original array to copy array
+    this.setState({
+      persons: persons,
+    });
+  }
+
   render() {
     let person = null;
+
+    // For the Inline Style
     let buttonStyle = {
       backgroundColor: "green",
       color: "white",
@@ -66,6 +79,18 @@ class App extends Component {
       padding: "8px",
       cursor: "pointer",
     };
+
+    // For the Dynamic Style Binding by using css classes
+    let heading3Class = [];
+
+    // Adding class based on conditions
+    if (this.state.persons.length <= 2) {
+      heading3Class.push('red');
+    }
+
+    if (this.state.persons.length <= 1) {
+      heading3Class.push('bold');
+    }
 
     if (this.state.showPersons) {
       // person = (
@@ -82,9 +107,11 @@ class App extends Component {
       person = this.state.persons.map((person, idx) => {
         return (
           <Person
+            heading3Class={heading3Class}
             name={person.name}
             age={person.age}
             click={() => this.changePersonDetailHandler("Shubham", "24", idx)}
+            deletePersonClick={() => this.deletePersonClickHandler(idx)}
             changeName={(event) => this.changePersonNameHandler(event, idx)}
             changeAge={(event) => this.changePersonAgeHandler(event, idx)}
             key={idx}
