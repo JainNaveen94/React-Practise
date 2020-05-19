@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Radium, { StyleRoot } from "radium";
+// import Radium, { StyleRoot } from "radium";
 
 import "./App.css";
 
@@ -82,10 +82,10 @@ class App extends Component {
       padding: "8px",
       cursor: "pointer",
       borderRadius: "20%",
-      ":hover": {
-        backgroundColor: "lightgreen",
-        color: "black",
-      },
+      // ":hover": {
+      //   backgroundColor: "lightgreen",
+      //   color: "black",
+      // },
     };
 
     // For the Dynamic Style Binding by using css classes
@@ -131,14 +131,14 @@ class App extends Component {
       // Update the Style Based on Condition
       buttonStyle.backgroundColor = "red";
       buttonStyle.border = "1px Solid red";
-      buttonStyle[":hover"] = {
-        backgroundColor: "salmon",
-        color: "black",
-      };
+      // buttonStyle[":hover"] = {
+      //   backgroundColor: "salmon",
+      //   color: "black",
+      // };
     }
 
     return (
-      <StyleRoot>
+      // <StyleRoot>
         <div className="App">
           <h1>{this.state.pageTitle}</h1>
           <button style={buttonStyle} onClick={() => this.togglePerson()}>
@@ -156,9 +156,10 @@ class App extends Component {
           <span>Child Component Button</span>
         </Person>) : null} */}
         </div>
-      </StyleRoot>
+      // </StyleRoot>
     );
   }
 }
 
-export default Radium(App);
+export default App;
+// export default Radium(App);
