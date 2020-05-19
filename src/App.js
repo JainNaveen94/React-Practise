@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import Radium from 'radium';
+
 import "./App.css";
+
 import Person from "./Person/Person";
 
 class App extends Component {
@@ -78,6 +81,11 @@ class App extends Component {
       border: "1px solid green",
       padding: "8px",
       cursor: "pointer",
+      borderRadius: "20%",
+      ':hover': {
+        backgroundColor: "lightgreen",
+        color: "black"
+      }
     };
 
     // For the Dynamic Style Binding by using css classes
@@ -123,6 +131,11 @@ class App extends Component {
       // Update the Style Based on Condition
       buttonStyle.backgroundColor = "red";
       buttonStyle.border = "1px Solid red";
+      buttonStyle[':hover'] = {
+        backgroundColor: "salmon",
+        color: "black"
+      }
+
     }
 
     return (
@@ -145,4 +158,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
