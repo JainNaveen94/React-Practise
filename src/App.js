@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import Radium, { StyleRoot } from "radium";
 
-import "./App.css";
+import appCSS from "./App.css";
 
 import Person from "./Person/Person";
 
@@ -139,7 +139,7 @@ class App extends Component {
 
     return (
       // <StyleRoot>
-        <div className="App">
+      <div className={appCSS.App}>
           <h1>{this.state.pageTitle}</h1>
           <button style={buttonStyle} onClick={() => this.togglePerson()}>
             Toggle Person

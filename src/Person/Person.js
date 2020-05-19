@@ -1,7 +1,7 @@
 import React from "react";
 // import Radium from 'radium';
 
-import "./Person.css";
+import personCSS from "./Person.css";
 
 const person = (props) => {
   // let mediaStyleOnCard = {
@@ -12,7 +12,7 @@ const person = (props) => {
 
   return (
     <div
-      className="person"
+      className={personCSS.person}
       // style={mediaStyleOnCard}
       onClick={props.deletePersonClick}
     >
