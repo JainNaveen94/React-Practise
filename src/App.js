@@ -10,7 +10,15 @@ class App extends Component {
       { name: "Rahul", age: "26" },
     ],
     pageTitle: "This is Naveen React App",
+    showPersons: true,
   };
+
+  togglePerson = () => {
+    const showPersons = this.state.showPersons;
+    this.setState({
+      showPersons: !showPersons
+    })
+  }
 
   changePersonDetailHandler = (name, age, idx) => {
     this.setState({
@@ -50,9 +58,11 @@ class App extends Component {
   };
 
   render() {
-    return (
-      <div className="App">
-        <h1>{this.state.pageTitle}</h1>
+
+    let person = null;
+
+    if(this.state.showPersons) {
+      person = (
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
@@ -62,11 +72,29 @@ class App extends Component {
         >
           <span>Child Component Button</span>
         </Person>
+      )
+    }
+
+
+    return (
+      <div className="App">
+        <h1>{this.state.pageTitle}</h1>
         <button
-          onClick={() => this.changePersonDetailHandler("Shubham", "24", 0)}
+          onClick={() => this.togglePerson()}
         >
-          Change Detail
+          Toggle Person
         </button>
+        {person}
+        {/* { this.state.showPersons ? 
+        (<Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          click={() => this.changePersonDetailHandler("Shubham", "24", 0)}
+          changeName={(event) => this.changePersonNameHandler(event, 0)}
+          changeAge={(event) => this.changePersonAgeHandler(event, 0)}
+        >
+          <span>Child Component Button</span>
+        </Person>) : null} */}
       </div>
     );
   }
