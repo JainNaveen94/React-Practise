@@ -58,6 +58,14 @@ class App extends Component {
 
   render() {
     let person = null;
+    let buttonStyle = {
+      backgroundColor: "green",
+      color: "white",
+      font: "inherit",
+      border: "1px solid green",
+      padding: "8px",
+      cursor: "pointer",
+    };
 
     if (this.state.showPersons) {
       // person = (
@@ -85,12 +93,15 @@ class App extends Component {
           </Person>
         );
       });
+      // Update the Style Based on Condition
+      buttonStyle.backgroundColor = "red";
+      buttonStyle.border = "1px Solid red";
     }
 
     return (
       <div className="App">
         <h1>{this.state.pageTitle}</h1>
-        <button onClick={() => this.togglePerson()}>Toggle Person</button>
+        <button style={buttonStyle} onClick={() => this.togglePerson()}>Toggle Person</button>
         {person}
         {/* { this.state.showPersons ? 
         (<Person
