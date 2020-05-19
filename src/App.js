@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import Radium, { StyleRoot } from "radium";
+
 import "./App.css";
+
 import Person from "./Person/Person";
 
 class App extends Component {
@@ -56,8 +59,46 @@ class App extends Component {
     );
   };
 
+  deletePersonClickHandler = (idx) => {
+    // Create the Copy of the Person Array Using Spread Operator
+    let persons = [...this.state.persons];
+    // Delete the Entry From the Copied Array
+    persons.splice(idx, 1);
+    // Replace the original array to copy array
+    this.setState({
+      persons: persons,
+    });
+  };
+
   render() {
     let person = null;
+
+    // For the Inline Style
+    let buttonStyle = {
+      backgroundColor: "green",
+      color: "white",
+      font: "inherit",
+      border: "1px solid green",
+      padding: "8px",
+      cursor: "pointer",
+      borderRadius: "20%",
+      ":hover": {
+        backgroundColor: "lightgreen",
+        color: "black",
+      },
+    };
+
+    // For the Dynamic Style Binding by using css classes
+    let heading3Class = [];
+
+    // Adding class based on conditions
+    if (this.state.persons.length <= 2) {
+      heading3Class.push("red");
+    }
+
+    if (this.state.persons.length <= 1) {
+      heading3Class.push("bold");
+    }
 
     if (this.state.showPersons) {
       // person = (
@@ -74,9 +115,11 @@ class App extends Component {
       person = this.state.persons.map((person, idx) => {
         return (
           <Person
+            heading3Class={heading3Class}
             name={person.name}
             age={person.age}
             click={() => this.changePersonDetailHandler("Shubham", "24", idx)}
+            deletePersonClick={() => this.deletePersonClickHandler(idx)}
             changeName={(event) => this.changePersonNameHandler(event, idx)}
             changeAge={(event) => this.changePersonAgeHandler(event, idx)}
             key={idx}
@@ -85,14 +128,24 @@ class App extends Component {
           </Person>
         );
       });
+      // Update the Style Based on Condition
+      buttonStyle.backgroundColor = "red";
+      buttonStyle.border = "1px Solid red";
+      buttonStyle[":hover"] = {
+        backgroundColor: "salmon",
+        color: "black",
+      };
     }
 
     return (
-      <div className="App">
-        <h1>{this.state.pageTitle}</h1>
-        <button onClick={() => this.togglePerson()}>Toggle Person</button>
-        {person}
-        {/* { this.state.showPersons ? 
+      <StyleRoot>
+        <div className="App">
+          <h1>{this.state.pageTitle}</h1>
+          <button style={buttonStyle} onClick={() => this.togglePerson()}>
+            Toggle Person
+          </button>
+          {person}
+          {/* { this.state.showPersons ? 
         (<Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
@@ -102,9 +155,10 @@ class App extends Component {
         >
           <span>Child Component Button</span>
         </Person>) : null} */}
-      </div>
+        </div>
+      </StyleRoot>
     );
   }
 }
 
-export default App;
+export default Radium(App);
