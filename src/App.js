@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Radium from 'radium';
+import Radium, { StyleRoot } from "radium";
 
 import "./App.css";
 
@@ -68,7 +68,7 @@ class App extends Component {
     this.setState({
       persons: persons,
     });
-  }
+  };
 
   render() {
     let person = null;
@@ -82,10 +82,10 @@ class App extends Component {
       padding: "8px",
       cursor: "pointer",
       borderRadius: "20%",
-      ':hover': {
+      ":hover": {
         backgroundColor: "lightgreen",
-        color: "black"
-      }
+        color: "black",
+      },
     };
 
     // For the Dynamic Style Binding by using css classes
@@ -93,11 +93,11 @@ class App extends Component {
 
     // Adding class based on conditions
     if (this.state.persons.length <= 2) {
-      heading3Class.push('red');
+      heading3Class.push("red");
     }
 
     if (this.state.persons.length <= 1) {
-      heading3Class.push('bold');
+      heading3Class.push("bold");
     }
 
     if (this.state.showPersons) {
@@ -131,19 +131,21 @@ class App extends Component {
       // Update the Style Based on Condition
       buttonStyle.backgroundColor = "red";
       buttonStyle.border = "1px Solid red";
-      buttonStyle[':hover'] = {
+      buttonStyle[":hover"] = {
         backgroundColor: "salmon",
-        color: "black"
-      }
-
+        color: "black",
+      };
     }
 
     return (
-      <div className="App">
-        <h1>{this.state.pageTitle}</h1>
-        <button style={buttonStyle} onClick={() => this.togglePerson()}>Toggle Person</button>
-        {person}
-        {/* { this.state.showPersons ? 
+      <StyleRoot>
+        <div className="App">
+          <h1>{this.state.pageTitle}</h1>
+          <button style={buttonStyle} onClick={() => this.togglePerson()}>
+            Toggle Person
+          </button>
+          {person}
+          {/* { this.state.showPersons ? 
         (<Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
@@ -153,7 +155,8 @@ class App extends Component {
         >
           <span>Child Component Button</span>
         </Person>) : null} */}
-      </div>
+        </div>
+      </StyleRoot>
     );
   }
 }
