@@ -4,7 +4,7 @@ import Person from "./Person/Person";
 
 class App extends Component {
   state = {
-    person: [
+    persons: [
       { name: "Naveen", age: "25" },
       { name: "Deepak", age: "33" },
       { name: "Rahul", age: "26" },
@@ -14,7 +14,7 @@ class App extends Component {
 
   changePersonDetailHandler = (name, age, idx) => {
     this.setState({
-      person: this.modifyPerson(this.state.person, idx, name, age),
+      persons: this.modifyPerson(this.state.persons, idx, name, age),
       pageTitle: `This is ${name} React App`,
     });
   };
@@ -22,11 +22,11 @@ class App extends Component {
   changePersonNameHandler = (event, idx) => {
     console.log("Clicked Name", event);
     this.setState({
-      person: this.modifyPerson(
-        this.state.person,
+      persons: this.modifyPerson(
+        this.state.persons,
         idx,
         event.target.value,
-        this.state.person[idx].age
+        this.state.persons[idx].age
       ),
       pageTitle: `This is ${event.target.value} React App`,
     });
@@ -34,10 +34,10 @@ class App extends Component {
 
   changePersonAgeHandler = (event, idx) => {
     this.setState({
-      person: this.modifyPerson(
-        this.state.person,
+      persons: this.modifyPerson(
+        this.state.persons,
         idx,
-        this.state.person[idx].name,
+        this.state.persons[idx].name,
         event.target.value
       ),
     });
@@ -54,8 +54,8 @@ class App extends Component {
       <div className="App">
         <h1>{this.state.pageTitle}</h1>
         <Person
-          name={this.state.person[0].name}
-          age={this.state.person[0].age}
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
           click={() => this.changePersonDetailHandler("Shubham", "24", 0)}
           changeName={(event) => this.changePersonNameHandler(event, 0)}
           changeAge={(event) => this.changePersonAgeHandler(event, 0)}
@@ -67,25 +67,6 @@ class App extends Component {
         >
           Change Detail
         </button>
-
-        {/* <Person
-          name={this.state.person[1].name}
-          age={this.state.person[1].age}
-        />
-        <button
-          onClick={() => this.changePersonDetailHandler("Siidharth", "27", 0)}
-        >
-          Change Detail
-        </button>
-        <Person
-          name={this.state.person[1].name}
-          age={this.state.person[1].age}
-        />
-        <button
-          onClick={() => this.changePersonDetailHandler("Vipul", "22", 1)}
-        >
-          Change Detail
-        </button> */}
       </div>
     );
   }
