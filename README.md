@@ -67,3 +67,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 "# React-Practise" 
+
+### `npm install --save radium`
+  -should be Installed for ***Sudo and Media Query*** CSS through JS File.
+
+### Note Point :
+  1. ***For Media Query to run through JS File Please wrap Your App Component with `<StyleRoot>` tag which is imported from Radium Package***
+  2. ***Also Export Your each Component with `Radium()` example `Radium(App)`.***
