@@ -1,5 +1,5 @@
-.person {
-    width: 60%;
+.Person {
+    width: 25%;
     margin: 16px auto;
     border: 1px solid blueviolet;
     border-radius: 25%;
@@ -8,13 +8,44 @@
     text-align: center;
 }
 
-.red {
-    color: red;
+.normal {
+    color: black;
 }
 
-.bold {
+.red {
+    color: salmon;
+}
+
+.red-bold {
+    color: red;
     font-weight: bold;
 }
+
+.Person button {
+    background-color: green;
+    color: white;
+    font: inherit;
+    border: 1px solid green;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 20%;
+}
+
+.Person button:hover {
+    background-color: lightgreen;
+    color: black;
+}
+
+.Person button.Red {
+    background-color: red;
+}
+
+.Person button.Red:hover {
+    background-color: salmon;
+    color: black;
+}
+
+
 
 @media (min-length : 500px) {
     .person {

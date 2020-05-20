@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-// import Radium, { StyleRoot } from "radium";
 
 import appCSS from "./App.css";
 
-import Person from "../Components/Persons/Person/Person";
-// import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+import Persons from "../Components/Persons/Persons";
+import Cockpit from "../Components/Cockpit/Cockpit";
 
 class App extends Component {
   state = {
@@ -13,11 +12,10 @@ class App extends Component {
       { name: "Deepak", age: "33" },
       { name: "Rahul", age: "26" },
     ],
-    pageTitle: "This is Naveen React App",
     showPersons: false,
   };
 
-  togglePerson = () => {
+  togglePersonHandler = () => {
     const showPersons = this.state.showPersons;
     this.setState({
       showPersons: !showPersons,
@@ -72,101 +70,33 @@ class App extends Component {
   };
 
   render() {
-    let person = null;
-
-    // For the Inline Style
-    // let buttonStyle = {
-    //   backgroundColor: "green",
-    //   color: "white",
-    //   font: "inherit",
-    //   border: "1px solid green",
-    //   padding: "8px",
-    //   cursor: "pointer",
-    //   borderRadius: "20%",
-    // ":hover": {
-    //   backgroundColor: "lightgreen",
-    //   color: "black",
-    // },
-    // };
-
-    //for the css style
-    let btnClass = "";
-
-    // For the Dynamic Style Binding by using css classes
-    let heading3Class = [];
-
-    // Adding class based on conditions
-    if (this.state.persons.length <= 2) {
-      heading3Class.push("red");
-    }
-
-    if (this.state.persons.length <= 1) {
-      heading3Class.push("bold");
-    }
+    let persons = null;
 
     if (this.state.showPersons) {
-      // person = (
-      //   <Person
-      //     name={this.state.persons[0].name}
-      //     age={this.state.persons[0].age}
-      //     click={() => this.changePersonDetailHandler("Shubham", "24", 0)}
-      //     changeName={(event) => this.changePersonNameHandler(event, 0)}
-      //     changeAge={(event) => this.changePersonAgeHandler(event, 0)}
-      //   >
-      //     <span>Child Component Button</span>
-      //   </Person>
-      // )
-      person = this.state.persons.map((person, idx) => {
-        return (
-          // <ErrorBoundary key={idx}>
-            <Person
-              heading3Class={heading3Class}
-              name={person.name}
-              age={person.age}
-              click={() => this.changePersonDetailHandler("Shubham", "24", idx)}
-              deletePersonClick={() => this.deletePersonClickHandler(idx)}
-              changeName={(event) => this.changePersonNameHandler(event, idx)}
-              changeAge={(event) => this.changePersonAgeHandler(event, idx)}
-              key={idx}
-            >
-              <span>Child Component Button</span>
-            </Person>
-          // </ErrorBoundary>
-        );
-      });
-      // Update the Style Based on Condition
-      // buttonStyle.backgroundColor = "red";
-      // buttonStyle.border = "1px Solid red";
-      // buttonStyle[":hover"] = {
-      //   backgroundColor: "salmon",
-      //   color: "black",
-      // };
-      btnClass = appCSS.Red;
+      persons = <Persons
+        persons={this.state.persons}
+        click={(idx) => this.changePersonDetailHandler("Shubham", "24", idx)}
+        deletePersonClick={(idx) => this.deletePersonClickHandler(idx)}
+        changeNameClick={(event, idx) =>
+          this.changePersonNameHandler(event, idx)
+        }
+        changeAgeClick={(event, idx) =>
+          this.changePersonAgeHandler(event, idx)
+        }
+      />;
     }
 
     return (
-      // <StyleRoot>
       <div className={appCSS.App}>
-        <h1>{this.state.pageTitle}</h1>
-        <button className={btnClass} onClick={() => this.togglePerson()}>
-          Toggle Person
-        </button>
-        {person}
-        {/* { this.state.showPersons ? 
-        (<Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-          click={() => this.changePersonDetailHandler("Shubham", "24", 0)}
-          changeName={(event) => this.changePersonNameHandler(event, 0)}
-          changeAge={(event) => this.changePersonAgeHandler(event, 0)}
-        >
-          <span>Child Component Button</span>
-        </Person>) : null} */}
+        <Cockpit
+          pageTitle={this.props.pageTitle}
+          showPersons={this.state.showPersons}
+          toggleClicked={() => this.togglePersonHandler()}
+        />
+        {persons}
       </div>
-      // </StyleRoot>
     );
   }
 }
 
 export default App;
-// export default Radium(App);

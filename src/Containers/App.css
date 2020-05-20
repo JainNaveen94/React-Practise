@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.App button {
+/* .App button {
   background-color: green;
   color: white;
   font: inherit;
@@ -24,4 +24,4 @@
 .App button.Red:hover {
   background-color: salmon;
   color: black;
-}
+} */
