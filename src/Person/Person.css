@@ -16,8 +16,8 @@
     font-weight: bold;
 }
 
-/* @media (min-length : 500px) {
+@media (min-length : 500px) {
     .person {
         width: 450px;
     }
-} */
+}
