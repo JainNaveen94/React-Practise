@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 import appCSS from "./App.css";
 
-import Person from "./Person/Person";
+import Person from "../Components/Persons/Person/Person";
 // import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 class App extends Component {
@@ -118,7 +118,7 @@ class App extends Component {
       // )
       person = this.state.persons.map((person, idx) => {
         return (
-          // <ErrorBoundary>
+          // <ErrorBoundary key={idx}>
             <Person
               heading3Class={heading3Class}
               name={person.name}

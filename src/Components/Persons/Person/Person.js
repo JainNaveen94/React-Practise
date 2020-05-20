@@ -2,7 +2,7 @@ import React from "react";
 // import Radium from 'radium';
 
 import personCSS from "./Person.css";
-import appCSS from "../App.css";
+import appCSS from "../../../Containers/App.css";
 
 const person = (props) => {
   // let mediaStyleOnCard = {
