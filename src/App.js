@@ -74,19 +74,22 @@ class App extends Component {
     let person = null;
 
     // For the Inline Style
-    let buttonStyle = {
-      backgroundColor: "green",
-      color: "white",
-      font: "inherit",
-      border: "1px solid green",
-      padding: "8px",
-      cursor: "pointer",
-      borderRadius: "20%",
+    // let buttonStyle = {
+    //   backgroundColor: "green",
+    //   color: "white",
+    //   font: "inherit",
+    //   border: "1px solid green",
+    //   padding: "8px",
+    //   cursor: "pointer",
+    //   borderRadius: "20%",
       // ":hover": {
       //   backgroundColor: "lightgreen",
       //   color: "black",
       // },
-    };
+    // };
+
+    //for the css style
+    let btnClass = '';
 
     // For the Dynamic Style Binding by using css classes
     let heading3Class = [];
@@ -129,19 +132,20 @@ class App extends Component {
         );
       });
       // Update the Style Based on Condition
-      buttonStyle.backgroundColor = "red";
-      buttonStyle.border = "1px Solid red";
+      // buttonStyle.backgroundColor = "red";
+      // buttonStyle.border = "1px Solid red";
       // buttonStyle[":hover"] = {
       //   backgroundColor: "salmon",
       //   color: "black",
       // };
+      btnClass = appCSS.Red
     }
 
     return (
       // <StyleRoot>
       <div className={appCSS.App}>
           <h1>{this.state.pageTitle}</h1>
-          <button style={buttonStyle} onClick={() => this.togglePerson()}>
+          <button className={btnClass} onClick={() => this.togglePerson()}>
             Toggle Person
           </button>
           {person}

@@ -2,6 +2,7 @@ import React from "react";
 // import Radium from 'radium';
 
 import personCSS from "./Person.css";
+import appCSS from "../App.css";
 
 const person = (props) => {
   // let mediaStyleOnCard = {
@@ -14,7 +15,6 @@ const person = (props) => {
     <div
       className={personCSS.person}
       // style={mediaStyleOnCard}
-      onClick={props.deletePersonClick}
     >
       <h3 className={props.heading3Class.join(" ")}>
         Hello Everyone, I am {props.name} and My Age is {props.age}
@@ -22,6 +22,7 @@ const person = (props) => {
       <input type="text" onChange={props.changeName} value={props.name} />
       <input type="text" onChange={props.changeAge} value={props.age} />
       <button onClick={props.click}>{props.children}</button>
+      <button className={appCSS.Red} onClick={props.deletePersonClick}>Delete Record</button>
     </div>
   );
 };
