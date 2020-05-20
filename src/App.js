@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import appCSS from "./App.css";
 
 import Person from "./Person/Person";
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+// import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 class App extends Component {
   state = {
@@ -118,7 +118,7 @@ class App extends Component {
       // )
       person = this.state.persons.map((person, idx) => {
         return (
-          <ErrorBoundary>
+          // <ErrorBoundary>
             <Person
               heading3Class={heading3Class}
               name={person.name}
@@ -131,7 +131,7 @@ class App extends Component {
             >
               <span>Child Component Button</span>
             </Person>
-          </ErrorBoundary>
+          // </ErrorBoundary>
         );
       });
       // Update the Style Based on Condition

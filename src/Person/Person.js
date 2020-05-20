@@ -11,11 +11,12 @@ const person = (props) => {
   //   }
   // }
 
-  const rndm = Math.random();
+  // Just To Demostrate The Error Handling In React
+  // const rndm = Math.random();
 
-  if(rndm > 0.7) {
-    throw new Error('Some Error Occured While Rendering Person');
-  }
+  // if(rndm > 0.7) {
+  //   throw new Error('Some Error Occured While Rendering Person');
+  // }
 
   return (
     <div
