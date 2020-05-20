@@ -11,6 +11,12 @@ const person = (props) => {
   //   }
   // }
 
+  const rndm = Math.random();
+
+  if(rndm > 0.7) {
+    throw new Error('Some Error Occured While Rendering Person');
+  }
+
   return (
     <div
       className={personCSS.person}

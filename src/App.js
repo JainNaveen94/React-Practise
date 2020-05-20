@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import appCSS from "./App.css";
 
 import Person from "./Person/Person";
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 class App extends Component {
   state = {
@@ -82,14 +83,14 @@ class App extends Component {
     //   padding: "8px",
     //   cursor: "pointer",
     //   borderRadius: "20%",
-      // ":hover": {
-      //   backgroundColor: "lightgreen",
-      //   color: "black",
-      // },
+    // ":hover": {
+    //   backgroundColor: "lightgreen",
+    //   color: "black",
+    // },
     // };
 
     //for the css style
-    let btnClass = '';
+    let btnClass = "";
 
     // For the Dynamic Style Binding by using css classes
     let heading3Class = [];
@@ -117,18 +118,20 @@ class App extends Component {
       // )
       person = this.state.persons.map((person, idx) => {
         return (
-          <Person
-            heading3Class={heading3Class}
-            name={person.name}
-            age={person.age}
-            click={() => this.changePersonDetailHandler("Shubham", "24", idx)}
-            deletePersonClick={() => this.deletePersonClickHandler(idx)}
-            changeName={(event) => this.changePersonNameHandler(event, idx)}
-            changeAge={(event) => this.changePersonAgeHandler(event, idx)}
-            key={idx}
-          >
-            <span>Child Component Button</span>
-          </Person>
+          <ErrorBoundary>
+            <Person
+              heading3Class={heading3Class}
+              name={person.name}
+              age={person.age}
+              click={() => this.changePersonDetailHandler("Shubham", "24", idx)}
+              deletePersonClick={() => this.deletePersonClickHandler(idx)}
+              changeName={(event) => this.changePersonNameHandler(event, idx)}
+              changeAge={(event) => this.changePersonAgeHandler(event, idx)}
+              key={idx}
+            >
+              <span>Child Component Button</span>
+            </Person>
+          </ErrorBoundary>
         );
       });
       // Update the Style Based on Condition
@@ -138,18 +141,18 @@ class App extends Component {
       //   backgroundColor: "salmon",
       //   color: "black",
       // };
-      btnClass = appCSS.Red
+      btnClass = appCSS.Red;
     }
 
     return (
       // <StyleRoot>
       <div className={appCSS.App}>
-          <h1>{this.state.pageTitle}</h1>
-          <button className={btnClass} onClick={() => this.togglePerson()}>
-            Toggle Person
-          </button>
-          {person}
-          {/* { this.state.showPersons ? 
+        <h1>{this.state.pageTitle}</h1>
+        <button className={btnClass} onClick={() => this.togglePerson()}>
+          Toggle Person
+        </button>
+        {person}
+        {/* { this.state.showPersons ? 
         (<Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
@@ -159,7 +162,7 @@ class App extends Component {
         >
           <span>Child Component Button</span>
         </Person>) : null} */}
-        </div>
+      </div>
       // </StyleRoot>
     );
   }
